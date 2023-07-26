@@ -21,6 +21,7 @@ Here, I would gather the books I am reading or have read.
 | Great Expectation | Charles Dickens | ? | ? | ? | ? |
 | ? | Milan Kundera | ? | ? | ? | ? |
 | ? | Victor Hugo | ? | ? | ? | ? |
+| ? | Alexander Duma | ? | ? | ? | ? |
 | Odysse | James Joyse | Maybe persian, uncensored | ? | ? | ? |
 | Necromicon | H. P. Lovecraft | ? | ? | ? | ? |
 

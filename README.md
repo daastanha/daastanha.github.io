@@ -22,6 +22,7 @@ Here, I would gather the books I am reading or have read.
 | ? | Milan Kundera | ? | ? | ? | ? |
 | ? | Victor Hugo | ? | ? | ? | ? |
 | ? | Alexander Duma | ? | ? | ? | ? |
+| Catar de mio Cid | Unknown | ? | ? | ? | ? |
 | Odysse | James Joyse | Maybe persian, uncensored | ? | ? | ? |
 | Necromicon | H. P. Lovecraft | ? | ? | ? | ? |
 

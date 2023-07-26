@@ -25,4 +25,5 @@ Here, I would gather the books I am reading or have read.
 | Catar de mio Cid | Unknown | ? | ? | ? | ? |
 | Odysse | James Joyse | Maybe persian, uncensored | ? | ? | ? |
 | Necromicon | H. P. Lovecraft | ? | ? | ? | ? |
+| Madam Bovary | ? | ? | ? | ? | ? |
 

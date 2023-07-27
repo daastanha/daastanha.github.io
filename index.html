@@ -8,6 +8,7 @@
 <body>
     <div class="container">
         <h2>Book List</h2>
+        <input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Search for books..">
         <table class="table" id="bookTable">
             <thead>
                 <tr>
@@ -20,18 +21,54 @@
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td>The shadow of the wind</td>
+                    <td>Carlos Luis Zafon</td>
+                    <td>English</td>
+                    <td>26.07.2023</td>
+                    <td>?</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td>The angel's game</td>
+                    <td>Carlos Luis Zafon</td>
+                    <td>English</td>
+                    <td>20.07.2023</td>
+                    <td>?</td>
+                    <td>26.07.2023</td>
+                </tr>
+                <tr>
+                    <td>Prisoner of Heaven</td>
+                    <td>Carlos Luis Zafon</td>
+                    <td>?</td>
+                    <td>?</td>
+                    <td>?</td>
+                    <td>?</td>
+                </tr>
+                <!-- Add more rows here -->
             </tbody>
         </table>
-        <button class="btn btn-primary" id="addBook">Add a new book</button>
     </div>
 
     <script>
-        $(document).ready(function() {
-            $("#addBook").click(function() {
-                var markup = "<tr><td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'></td></tr>";
-                $("#bookTable tbody").append(markup);
-            });
-        });
+        function searchFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("bookTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }       
+            }
+        }
     </script>
 </body>
 </html>

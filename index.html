@@ -3,7 +3,7 @@
 <head>
     <title>Editable Table</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -21,53 +21,56 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>The shadow of the wind</td>
-                    <td>Carlos Luis Zafon</td>
-                    <td>English</td>
-                    <td>26.07.2023</td>
-                    <td>?</td>
-                    <td>?</td>
-                </tr>
-                <tr>
-                    <td>The angel's game</td>
-                    <td>Carlos Luis Zafon</td>
-                    <td>English</td>
-                    <td>20.07.2023</td>
-                    <td>?</td>
-                    <td>26.07.2023</td>
-                </tr>
-                <tr>
-                    <td>Prisoner of Heaven</td>
-                    <td>Carlos Luis Zafon</td>
-                    <td>?</td>
-                    <td>?</td>
-                    <td>?</td>
-                    <td>?</td>
-                </tr>
-                <!-- Add more rows here -->
             </tbody>
         </table>
     </div>
 
     <script>
+        var sortAscending = true;
+        var table = d3.select('#bookTable');
+        var tbody = table.select('tbody');
+        var columns = ["Name", "Author", "Language", "Date(started)", "Notes", "Date(finished)"];
+
+        d3.csv("data.csv").then(function(data) {
+            data.forEach(function(d) {
+                var row = tbody.append("tr");
+                columns.forEach(function(column) {
+                    row.append("td").text(d[column]);
+                });
+            });
+
+            table.selectAll('th')
+                .data(columns)
+                .enter()
+                .append('th')
+                .text(function (d) { return d; })
+                .on('click', function (d) {
+                    if (sortAscending) {
+                        rows.sort(function(a, b) { return d3.ascending(a[d], b[d]); });
+                        sortAscending = false;
+                    } else {
+                        rows.sort(function(a, b) { return d3.descending(a[d], b[d]); });
+                        sortAscending = true;
+                    }
+                });
+        });
+
         function searchFunction() {
-            var input, filter, table, tr, td, i, txtValue;
+            var input, filter, tr, td, i, txtValue;
             input = document.getElementById("searchInput");
             filter = input.value.toUpperCase();
-            table = document.getElementById("bookTable");
-            tr = table.getElementsByTagName("tr");
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[0];
+            tr = tbody.selectAll("tr");
+            tr.each(function() {
+                td = d3.select(this).selectAll("td").nodes()[0];
                 if (td) {
                     txtValue = td.textContent || td.innerText;
                     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
+                        d3.select(this).style("display", "");
                     } else {
-                        tr[i].style.display = "none";
+                        d3.select(this).style("display", "none");
                     }
                 }       
-            }
+            });
         }
     </script>
 </body>

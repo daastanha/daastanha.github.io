@@ -1,6 +1,8 @@
 # daastan
 
 Here, I would gather the books I am reading or have read.
+I first started here in this read me, but I add a html now to make it more dynamic 
+and easier to work.
 
 ## Books 
 ### I have read:

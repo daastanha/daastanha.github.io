@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editable Table</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Book List</h2>
+        <table class="table" id="bookTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Author</th>
+                    <th>Language</th>
+                    <th>Date (started)</th>
+                    <th>Notes</th>
+                    <th>Date (finished)</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <button class="btn btn-primary" id="addBook">Add new book</button>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#addBook").click(function() {
+                var markup = "<tr><td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'></td></tr>";
+                $("#bookTable tbody").append(markup);
+            });
+        });
+    </script>
+</body>
+</html>

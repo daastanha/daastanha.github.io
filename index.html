@@ -31,7 +31,7 @@
         var tbody = table.select('tbody');
         var columns = ["Name", "Author", "Language", "Date(started)", "Notes", "Date(finished)"];
 
-        d3.csv("books.csv").then(function(data) {
+        d3.csv("data.csv").then(function(data) {
             data.forEach(function(d) {
                 var row = tbody.append("tr");
                 columns.forEach(function(column) {

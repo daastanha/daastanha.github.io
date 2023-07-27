@@ -11,7 +11,7 @@
         <input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Search for books..">
         <table class="table table-striped table-bordered" id="bookTable">
             <thead>
-                <tr>
+                <tr
                     <th>Name</th>
                     <th>Author</th>
                     <th>Language</th>
@@ -31,7 +31,7 @@
         var tbody = table.select('tbody');
         var columns = ["Name", "Author", "Language", "Date(started)", "Notes", "Date(finished)"];
 
-        d3.csv("books.csv").then(function(data) {
+        d3.csv("data.csv").then(function(data) {
             data.forEach(function(d) {
                 var row = tbody.append("tr");
                 columns.forEach(function(column) {

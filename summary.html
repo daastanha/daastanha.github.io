@@ -23,7 +23,6 @@
 
         // Now you can use the filename to fetch the text file
         d3.text(filename, function(error, data){
-            if (error) throw error;
             d3.select('#content').html(data); 
         });
     </script>

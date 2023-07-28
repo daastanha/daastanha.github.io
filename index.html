@@ -39,7 +39,7 @@
                       row.append("td").text(d[column]);
                     } else {
                       file_name = d[column].replace(/ /g, '');
-                      file_name = file_name.replace("'", '').toLowerCase();
+                      file_name = file_name.replace("'", '').toLowerCase() + ".txt";
                       row.append("td").append("a").text(d[column]).attr("href", "summary.html?file_name="+file_name);
                     }
                 });

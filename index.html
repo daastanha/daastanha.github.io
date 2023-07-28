@@ -38,7 +38,7 @@
                     if(column != "Name") {
                       row.append("td").text(d[column]);
                     } else {
-                      file_name = d[column].replace(/^a-zA-Z0-9 ]/g, '');
+                      file_name = d[column].replace(/ /g, '');
                       file_name = file_name.replace("'", '').toLowerCase();
                       row.append("td").append("a").text(d[column]).attr("href", "summary.html?file_name="+file_name);
                     }

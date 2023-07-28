@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Story Summaries</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Story Summaries</h1>
+            <p id="content"></p>
+        </div>
+    </div>
+
+    <script>
+        // Get the URL
+        var url = new URL(window.location.href);
+        // Get the filename parameter
+        var filename = url.searchParams.get("filename");
+
+        // Now you can use the filename to fetch the text file
+        d3.text(filename, function(error, data){
+            if (error) throw error;
+            document.getElementById('content').innerText = data;
+        });
+    </script>
+</body>
+</html>

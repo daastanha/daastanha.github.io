@@ -40,7 +40,7 @@
                     } else {
                       file_name = d[column].replace(/ /g, '');
                       file_name = file_name.replace("'", '').toLowerCase() + ".txt";
-                      row.append("td").append("a").text(d[column]).attr("href", "summary.html?file_name="+file_name);
+                      row.append("td").append("a").text(d[column]).attr("href", "summary.html?filename="+file_name);
                     }
                 });
             });

@@ -20,11 +20,7 @@
         var url = new URL(window.location.href);
         // Get the filename parameter
         var filename = url.searchParams.get("filename");
-
-        // Now you can use the filename to fetch the text file
-        d3.text(filename, function(error, data){
-            d3.select('#content').html(data); 
-        });
+        d3.text(filename, function(data){}).then(function(data){d3.select('#content').html(data);})
     </script>
 </body>
 </html>

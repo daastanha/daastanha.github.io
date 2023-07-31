@@ -28,7 +28,7 @@
     <div class="container">
         <div class="jumbotron">
             <h2>Story Summary and Notes</h2>
-            <pre id="content"></pre>
+            <p id="content"></p>
         </div>
     </div>
 
@@ -38,7 +38,7 @@
         // Get the filename parameter
         var filename = url.searchParams.get("filename");
         d3.text(filename, function(data){}).then(function(data){
-            d3.select('#content').html(data);
+            d3.select('#content').html(data.replaceAll("\n","<br/>"));
             var detectedLanguageDirection = detect_lang_direction(data);
             if (detectedLanguageDirection == "rtl") {
                 document.getElementById('content').style.direction = 'rtl';

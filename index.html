@@ -32,7 +32,6 @@
                     <th>Author</th>
                     <th>Language</th>
                     <th>Date (started)</th>
-                    <th>Notes</th>
                     <th>Date (finished)</th>
                 </tr>
             </thead>
@@ -45,7 +44,7 @@
         var sortAscending = true;
         var table = d3.select('#bookTable');
         var tbody = table.select('tbody');
-        var columns = ["Name", "Author", "Language", "Date(started)", "Notes", "Date(finished)"];
+        var columns = ["Name", "Author", "Language", "Date(started)", "Date(finished)"];
 
         d3.csv("data.csv").then(function(data) {
             data.forEach(function(d) {

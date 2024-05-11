@@ -1,40 +1,40 @@
-Name,Author,Language,Date(started),Date(finished)
-Ham on Rye,Henry Charles Bukowski,English,?,?
-The shadow of the wind,Carlos Luis Zafon,English,26.07.2023,07.08.2023
-The angel's game,Carlos Luis Zafon,English,20.07.2023,26.07.2023
-The prisoner of heaven,Carlos Luis Zafon,English,07.08.2023,12.08.2023
-The labyrinth of the spritis,Carlos Luis Zafon,English,?,?
-Great Expectations,Charles Dickens,English,13.08.2023,?
-The house of the spirits,Isabel Allende,English,25.10.2023,?
-Disgrace,J.M.Coetzee,English,05.03.2024,10.03.2024
-Ask the dust,Jan Fante,Persian (Audiobook),14.03.2024,15.03.2024
-Baron on the Tree,Italo Calvino,Persian (Audiobook),16.03.2024,26.03.2024
-Stories,Ted Chiang,English,28.03.2024,07.04.2024
-The Clown,Heinrich Böll,Persian (Audiobook),27.03.2024,08.04.2024
-Pulp,Henry Charles Bukowski,Persian (Audiobook),09.04.2024,17.04.2024
-Brief answers to big questions,Stephan Hawkaing,Persian (Audiobook),17.04.2024,20.04.2024
-The Girl Who Saved the King of Sweden,Jonas Jonasson,Persian (Audiobook),20.04.2024,?
-One hundred years of solitude,Gabriel Garcias Marquez,Persian (Audiobook),01.05.2024,14.05.2024
-Corrections,Jonathan Franzen,English,?,?
-?,Milan Kundera,?,?,?
-?,Victor Hugo,?,?,?
-?,Alexander Duma,?,?,?
-Catar de mio Cid,Unknown,?,?,?
-Odysse,James Joyse,maybe persian,?,?
-Necromicon,H. P. Lovecraft,?,?,?
-Madam Bovary,?,?,?,?
-nofoosh morde,gogol,?,?,?
-Candide,Voltaire,?,?,?
-A fraction of the whole,Steve Toltz,?,?,?
-Die Therapie,Sebastian Fitzek,?,?,?
-,Isabel Allende,?,?,?
-?,Federico Garcia Lorca,?,?,?
-Don Quixote,Cervantes,?,?,?
-?,Mansour Zabetian,?,?,?
-Khaterate khane arvah,dostoyefsky,?,?,?
-jen zadegan,Dostoyefsky,?,?,?
-Brothers Karamazov Manga,Dostoyefsky,Spanish,05.09.2023,?
-Illiad,Homer,?,?,?
-Odyssey,Homer,?,?,?
-?,Mario Vargas Llosa,?,?,?
-Myron Bolitar series,?,?,?,?
+Name,Author,Language,Date(started),Date(finished),Rating(1-10)
+Ham on Rye,Henry Charles Bukowski,English,?,?,8
+The shadow of the wind,Carlos Luis Zafon,English,26.07.2023,07.08.2023,8
+The angel's game,Carlos Luis Zafon,English,20.07.2023,26.07.2023,8
+The prisoner of heaven,Carlos Luis Zafon,English,07.08.2023,12.08.2023,7
+The labyrinth of the spritis,Carlos Luis Zafon,English,?,?,?
+Great Expectations,Charles Dickens,English,13.08.2023,?,?
+The house of the spirits,Isabel Allende,English,25.10.2023,?,?
+Disgrace,J.M.Coetzee,English,05.03.2024,10.03.2024,?
+Ask the dust,Jan Fante,Persian (Audiobook),14.03.2024,15.03.2024,9
+Baron on the Tree,Italo Calvino,Persian (Audiobook),16.03.2024,26.03.2024,8
+Stories,Ted Chiang,English,28.03.2024,07.04.2024,6
+The Clown,Heinrich Böll,Persian (Audiobook),27.03.2024,08.04.2024,8
+Pulp,Henry Charles Bukowski,Persian (Audiobook),09.04.2024,17.04.2024,7
+Brief answers to big questions,Stephan Hawkaing,Persian (Audiobook),17.04.2024,20.04.2024,8
+The Girl Who Saved the King of Sweden,Jonas Jonasson,Persian (Audiobook),20.04.2024,?,4
+One hundred years of solitude,Gabriel Garcias Marquez,Persian (Audiobook),01.05.2024,14.05.2024,8
+Corrections,Jonathan Franzen,English,?,?,?
+?,Milan Kundera,?,?,?,?
+?,Victor Hugo,?,?,?,?
+?,Alexander Duma,?,?,?,?
+Catar de mio Cid,Unknown,?,?,?,?
+Odysse,James Joyse,maybe persian,?,?,?
+Necromicon,H. P. Lovecraft,?,?,?,?
+Madam Bovary,?,?,?,?,?
+nofoosh morde,gogol,?,?,?,?
+Candide,Voltaire,?,?,?,?
+A fraction of the whole,Steve Toltz,?,?,?,?
+Die Therapie,Sebastian Fitzek,?,?,?,?
+,Isabel Allende,?,?,?,?
+?,Federico Garcia Lorca,?,?,?,?
+Don Quixote,Cervantes,?,?,?,?
+?,Mansour Zabetian,?,?,?,?
+Khaterate khane arvah,dostoyefsky,?,?,?,?
+jen zadegan,Dostoyefsky,?,?,?,?
+Brothers Karamazov Manga,Dostoyefsky,Spanish,05.09.2023,?,?
+Illiad,Homer,?,?,?,?
+Odyssey,Homer,?,?,?,?
+?,Mario Vargas Llosa,?,?,?,?
+Myron Bolitar series,?,?,?,?,?

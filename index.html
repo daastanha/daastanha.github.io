@@ -46,7 +46,7 @@
         var sortAscending = true;
         var table = d3.select('#bookTable');
         var tbody = table.select('tbody');
-        var columns = ["Name", "Author", "Language", "Date(started)", "Date(finished)","Rating(1-10)","My View"];
+        var columns = ["Name", "Author", "Language", "Date(started)", "Date(finished)","Rating(1-10)"];
 
         d3.csv("data.csv").then(function(data) {
             data.forEach(function(d) {

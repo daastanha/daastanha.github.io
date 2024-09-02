@@ -4,17 +4,13 @@ Here, I would gather the books I am reading or have read.
 I first started here in this read me, but I add a html now to make it more dynamic 
 and easier to work.
 
-[Display text](a "Hover text")
 [id1]: ## "your hover text"
 
-| [id1]: ## "your hover text" | Fariba Vafa | Persian | 2022 |
-| Tarlan | Fariba Vafa | Persian | 2022 |
 
 | Name        | Author   |  Language  |  Date   |
 | ------------- |:-------------:| -----:| --- |
 | [Display text](a "Hover text")[id1]: ## "your hover text" | Fariba Vafa | Persian | 2022 |
 
-This is a [hover text][id1] example.
 
 ## Books 
 ### I have read:

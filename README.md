@@ -4,8 +4,7 @@ Here, I would gather the books I am reading or have read.
 I first started here in this read me, but I add a html now to make it more dynamic 
 and easier to work.
 
-Hover itㅤ[<img src="https://www.wppluginsforyou.com/wp-content/uploads/2020/05/tooltips.png" width="15px" />
-](## "Code preview syntax was generated using gh-linguist-preview")
+[Display text](a "Hover text")
 
 ## Books 
 ### I have read:

@@ -9,7 +9,7 @@ and easier to work.
 
 | Name        | Author   |  Language  |  Date   |
 | ------------- |:-------------:| -----:| --- |
-| [Display text](a "Hover text")[id1]: ## "your hover text" | Fariba Vafa | Persian | 2022 |
+| [Display text](a "Hover text") | Fariba Vafa | Persian | 2022 |
 
 
 ## Books 

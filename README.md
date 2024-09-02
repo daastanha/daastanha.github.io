@@ -17,6 +17,13 @@ and easier to work.
 | Padre José | Mr. Tench   | Coral Fellows|
 | Mrs. Fellows| Mr. Lehr   | Luis         |
 
+|     |     |     |
+|:---:|:---:|:---:|
+| کشیش        | ستوان      | بریگیدا     |
+| پدر خوزه    | آقای تنچ   | کورال فلوز  |
+| خانم فلوز   | آقای لر    | لوئیس       |
+
+
 
 ## Books 
 ### I have read:

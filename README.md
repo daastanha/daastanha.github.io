@@ -11,6 +11,11 @@ and easier to work.
 | ------------- |:-------------:| -----:| --- |
 | [Display text](a "Hover text") | Fariba Vafa | Persian | 2022 |
 
+| **Priest** | **Lieutenant** | **Brigida** |
+|------------|----------------|-------------|
+| **Padre José** | **Mr. Tench** | **Coral Fellows** |
+| **Mrs. Fellows** | **Mr. Lehr** | **Luis** |
+
 
 ## Books 
 ### I have read:

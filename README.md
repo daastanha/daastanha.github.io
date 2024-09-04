@@ -17,6 +17,16 @@ and easier to work.
 | Padre José | Mr. Tench   | Coral Fellows|
 | Mrs. Fellows| Mr. Lehr   | Luis         |
 
+# My Awesome Project
+
+## Rating
+⭐⭐⭐⭐⭐ 5/5
+
+or
+
+![4/5](https://img.shields.io/badge/rating-4%2F5-yellow)
+
+
 |     |     |     |
 |:---:|:---:|:---:|
 | کشیش        | ستوان      | بریگیدا     |

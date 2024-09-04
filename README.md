@@ -21,6 +21,7 @@ and easier to work.
 
 ## Rating
 ⭐⭐⭐⭐⭐ 5/5
+⭐⭐⭐⭐☆ 4/5
 
 or
 

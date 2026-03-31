@@ -1,5 +1,5 @@
-import matplotlib.pyplot as plt
-from matplotlib.lines import Line2D
+import networkx as nx
+import plotly.graph_objects as go
 
 # Data: List of tuples (Character, Novel)
 edges = [
@@ -80,27 +80,8 @@ for node in nodes:
     else:
         G.nodes[node]['type'] = 'novel'
 
-# Set the size of the plot
-plt.figure(figsize=(15, 10))
-
 # Positions for all nodes
 pos = nx.spring_layout(G, k=0.5, iterations=50)
-
-# Node colors and sizes based on type
-node_colors = []
-node_sizes = []
-
-for node in G.nodes():
-    node_type = G.nodes[node]['type']
-    degree = G.degree(node)
-    if node_type == 'character':
-        node_colors.append('skyblue')
-        node_sizes.append(degree * 100)
-    else:
-        node_colors.append('lightgreen')
-        node_sizes.append(800)  # Fixed size for novels
-
-import plotly.graph_objects as go
 
 edge_x = []
 edge_y = []

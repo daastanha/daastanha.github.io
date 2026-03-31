@@ -52,20 +52,21 @@
             data.forEach(function(d) {
                 var row = tbody.append("tr");
                 columns.forEach(function(column) {
-                    if(column != "Name") {
-                      row.append("td").text(d[column]);
+                    if (column != "Name") {
+                        row.append("td").text(d[column]);
                     } else {
-                      file_name = d[column].replace(/ /g, '');
-                      file_name = file_name.replace("'", '').toLowerCase() + ".txt";
-                      row.append("td").append("a").text(d[column]).attr("href", "summary.html?filename="+file_name);
+                        var file_name = d[column].replace(/ /g, '').replace("'", '').toLowerCase() + ".txt";
+                        row.append("td").append("a").text(d[column]).attr("href", "summary.html?filename=" + file_name);
                     }
                 });
-                url = "https://travel-in-books.github.io/posts/"+d['Name'].replaceAll(' ','-')
+                var url = "https://travel-in-books.github.io/posts/" + d['Name'].replaceAll(' ', '-');
                 row.append("td").html("<a href='" + url + "'>In Farsi</a>");
             });
 
+            var rows = tbody.selectAll("tr");
             table.selectAll('th')
                 .on('click', function (d, i) {
+                    if (i >= columns.length) { return; }
                     if (sortAscending) {
                         rows.sort(function(a, b) { return d3.ascending(a[columns[i]], b[columns[i]]); });
                         sortAscending = false;

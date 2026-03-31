@@ -70,37 +70,18 @@ novel_tree = [
 G.add_edges_from(novel_tree)
 
 # Set figure size
-plt.figure(figsize=(12, 10))
-
-# Define layout for nodes
-pos = nx.spring_layout(G, k=0.9, iterations=50)
-
-# Draw the graph
-nx.draw(G, pos, with_labels=True, node_size=3000, node_color="lightblue", font_size=8, font_weight="bold", arrows=True,
-        arrowstyle='->', arrowsize=10)
-
-# Display the plot
-plt.title("History of Novel Writing")
-# plt.show()
-
-# Recreate the visualization in a tree structure rather than a force-directed graph
-
-# Create a new directed graph for a tree layout
-G_tree = nx.DiGraph()
-
-# Add edges as in the original tree structure
-G_tree.add_edges_from(novel_tree)
-
-# Set figure size
 plt.figure(figsize=(16, 14))
 
-# Define a tree layout
-pos_tree = nx.drawing.nx_agraph.graphviz_layout(G_tree, prog='dot')
+# Use graphviz tree layout if available, fall back to spring layout
+try:
+    pos = nx.drawing.nx_agraph.graphviz_layout(G, prog='dot')
+except Exception:
+    pos = nx.spring_layout(G, k=0.9, iterations=50)
 
-# Draw the graph as a tree
-nx.draw(G_tree, pos_tree, with_labels=True, node_size=3000, node_color="lightgreen", font_size=8, font_weight="bold", arrows=True, arrowstyle='->', arrowsize=10)
+# Draw the graph
+nx.draw(G, pos, with_labels=True, node_size=3000, node_color="lightgreen", font_size=8, font_weight="bold", arrows=True,
+        arrowstyle='->', arrowsize=10)
 
-# Display the plot
 plt.title("History of Novel Writing - Tree Structure")
 plt.show()
 

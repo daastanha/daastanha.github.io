@@ -144,6 +144,7 @@
         .review-link:hover { color: #7a3b10; }
 
         .pages-text { color: #888; font-family: sans-serif; font-size: 12px; }
+        .pub-year { color: #888; font-family: sans-serif; font-size: 12px; }
 
         /* ── Rating badges ── */
         .badge {
@@ -210,6 +211,7 @@
                     <th>Name <i class="fas fa-sort sort-icon"></i></th>
                     <th>Author <i class="fas fa-sort sort-icon"></i></th>
                     <th>Language <i class="fas fa-sort sort-icon"></i></th>
+                    <th>Published <i class="fas fa-sort sort-icon"></i></th>
                     <th>Genre <i class="fas fa-sort sort-icon"></i></th>
                     <th>Sub-genre <i class="fas fa-sort sort-icon"></i></th>
                     <th>Pages <i class="fas fa-sort sort-icon"></i></th>
@@ -227,7 +229,7 @@
     var sortAscending = true;
     var table  = d3.select('#bookTable');
     var tbody  = table.select('tbody');
-    var columns = ["Name", "Author", "Language", "Genre", "Sub-genre", "Pages", "Date(started)", "Rating(1-10)"];
+    var columns = ["Name", "Author", "Language", "Published", "Genre", "Sub-genre", "Pages", "Date(started)", "Rating(1-10)"];
 
     var genreClass = {
         "Novel":         "g-novel",
@@ -290,6 +292,10 @@
                 } else if (col === "Pages") {
                     if (blank(val)) { row.append("td").html(dash()); return; }
                     row.append("td").html("<span class='pages-text'>" + val + "</span>");
+
+                } else if (col === "Published") {
+                    if (blank(val)) { row.append("td").html(dash()); return; }
+                    row.append("td").html("<span class='pub-year'>" + val + "</span>");
 
                 } else {
                     row.append("td").html(blank(val) ? dash() : val);

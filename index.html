@@ -214,7 +214,6 @@
                     <th>Sub-genre <i class="fas fa-sort sort-icon"></i></th>
                     <th>Pages <i class="fas fa-sort sort-icon"></i></th>
                     <th>Started <i class="fas fa-sort sort-icon"></i></th>
-                    <th>Finished <i class="fas fa-sort sort-icon"></i></th>
                     <th>Rating <i class="fas fa-sort sort-icon"></i></th>
                     <th>Review</th>
                 </tr>
@@ -228,7 +227,7 @@
     var sortAscending = true;
     var table  = d3.select('#bookTable');
     var tbody  = table.select('tbody');
-    var columns = ["Name", "Author", "Language", "Genre", "Sub-genre", "Pages", "Date(started)", "Date(finished)", "Rating(1-10)"];
+    var columns = ["Name", "Author", "Language", "Genre", "Sub-genre", "Pages", "Date(started)", "Rating(1-10)"];
 
     var genreClass = {
         "Novel":         "g-novel",

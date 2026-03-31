@@ -1,104 +1,321 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daastanha</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <style>
+        *, *::before, *::after { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            background: #f5f4f0;
+            color: #2c2c2c;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 14px;
+        }
+
+        /* ── Navbar ── */
         .navbar {
-            background-color: #f8f9fa;
+            background: #1e1e1e;
+            padding: 0 24px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            border-bottom: 3px solid #7a3b10;
         }
-        .navbar-brand i {
-            font-size: 24px;
+        .navbar-brand {
+            color: #f5f4f0;
+            text-decoration: none;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.04em;
         }
+        .navbar-brand:hover { color: #d4a96a; text-decoration: none; }
+
+        /* ── Page layout ── */
+        .page {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 28px 24px 60px;
+        }
+
+        /* ── Header ── */
+        .page-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin: 0 0 6px;
+            letter-spacing: 0.02em;
+        }
+        .book-count {
+            display: inline-block;
+            background: #1e1e1e;
+            color: #f5f4f0;
+            border-radius: 20px;
+            padding: 2px 11px;
+            font-size: 12px;
+            font-family: sans-serif;
+            vertical-align: middle;
+            margin-left: 6px;
+        }
+
+        /* ── Search ── */
+        .search-wrap {
+            position: relative;
+            max-width: 380px;
+            margin: 18px 0 20px;
+        }
+        .search-wrap .fa-search {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+            font-size: 13px;
+        }
+        #searchInput {
+            width: 100%;
+            height: 38px;
+            padding: 0 14px 0 34px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 13px;
+            font-family: sans-serif;
+            outline: none;
+            background: #fff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        #searchInput:focus {
+            border-color: #7a3b10;
+            box-shadow: 0 0 0 3px rgba(122, 59, 16, 0.12);
+        }
+
+        /* ── Table wrapper ── */
+        .table-wrap {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            overflow: auto;
+        }
+
+        /* ── Table ── */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        thead th {
+            background: #1e1e1e;
+            color: #e8e4dc;
+            font-family: sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            padding: 11px 14px;
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+            border: none;
+        }
+        thead th:hover { background: #333; }
+        thead th .sort-icon { margin-left: 4px; opacity: 0.35; font-size: 10px; }
+        thead th:last-child { cursor: default; }
+        thead th:last-child:hover { background: #1e1e1e; }
+
+        tbody tr { border-bottom: 1px solid #f0ede8; transition: background 0.12s; }
+        tbody tr:hover { background: #faf8f4; }
+        tbody td {
+            padding: 9px 14px;
+            vertical-align: middle;
+            border: none;
+        }
+
+        /* ── Cell types ── */
+        .book-link { color: #2c2c2c; font-weight: 500; text-decoration: none; }
+        .book-link:hover { color: #7a3b10; text-decoration: underline; }
+
+        .muted { color: #bbb; font-family: sans-serif; }
+
+        .review-link { color: #aaa; font-size: 12px; text-decoration: none; }
+        .review-link:hover { color: #7a3b10; }
+
+        .pages-text { color: #888; font-family: sans-serif; font-size: 12px; }
+
+        /* ── Rating badges ── */
+        .badge {
+            display: inline-block;
+            padding: 2px 9px;
+            border-radius: 12px;
+            font-family: sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .r-high { background: #d4edda; color: #155724; }
+        .r-mid  { background: #fff3cd; color: #856404; }
+        .r-low  { background: #f8d7da; color: #721c24; }
+
+        /* ── Genre badges ── */
+        .genre {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-family: sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .g-novel         { background: #dbeafe; color: #1e40af; }
+        .g-novella       { background: #ede9fe; color: #5b21b6; }
+        .g-short-stories { background: #d1fae5; color: #065f46; }
+        .g-non-fiction   { background: #fef3c7; color: #92400e; }
+        .g-memoir        { background: #fce7f3; color: #9d174d; }
+        .g-philosophy    { background: #ede9fe; color: #4c1d95; }
+        .g-poetry        { background: #cffafe; color: #164e63; }
+        .g-play          { background: #ffedd5; color: #9a3412; }
+        .g-essays        { background: #ecfdf5; color: #064e3b; }
+        .g-manga         { background: #f1f5f9; color: #334155; }
+        .g-thriller      { background: #fef2f2; color: #991b1b; }
+        .g-default       { background: #f1f5f9; color: #475569; }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-light">
-            <a class="navbar-brand" href="index.html">
-                <i class="fas fa-book"></i>
-            </a>
-        </nav>
-    </header>
-    <div class="container">
-        <h2>Book List</h2>
-        <input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Search for books..">
-        <table class="table table-striped table-bordered" id="bookTable">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Author</th>
-                    <th>Language</th>
-                    <th>Date (started)</th>
-                    <th>Date (finished)</th>
-                    <th>Rating (1-10)</th>
-                    <th>My View</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+
+<nav class="navbar">
+    <a class="navbar-brand" href="index.html">
+        <i class="fas fa-book-open"></i> Daastanha
+    </a>
+</nav>
+
+<div class="page">
+    <h1 class="page-title">
+        Book List <span class="book-count" id="bookCount">…</span>
+    </h1>
+
+    <div class="search-wrap">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search books, authors, genres…" oninput="searchFunction()">
     </div>
 
-    <script>
-        var sortAscending = true;
-        var table = d3.select('#bookTable');
-        var tbody = table.select('tbody');
-        var columns = ["Name", "Author", "Language", "Date(started)", "Date(finished)","Rating(1-10)"];
+    <div class="table-wrap">
+        <table id="bookTable">
+            <thead>
+                <tr>
+                    <th>Name <i class="fas fa-sort sort-icon"></i></th>
+                    <th>Author <i class="fas fa-sort sort-icon"></i></th>
+                    <th>Genre <i class="fas fa-sort sort-icon"></i></th>
+                    <th>Pages <i class="fas fa-sort sort-icon"></i></th>
+                    <th>Language <i class="fas fa-sort sort-icon"></i></th>
+                    <th>Started <i class="fas fa-sort sort-icon"></i></th>
+                    <th>Finished <i class="fas fa-sort sort-icon"></i></th>
+                    <th>Rating <i class="fas fa-sort sort-icon"></i></th>
+                    <th>Review</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
 
-        d3.csv("data.csv").then(function(data) {
-            data.forEach(function(d) {
-                var row = tbody.append("tr");
-                columns.forEach(function(column) {
-                    if (column != "Name") {
-                        row.append("td").text(d[column]);
-                    } else {
-                        var file_name = d[column].replace(/ /g, '').replace("'", '').toLowerCase() + ".txt";
-                        row.append("td").append("a").text(d[column]).attr("href", "summary.html?filename=" + file_name);
-                    }
-                });
-                var url = "https://travel-in-books.github.io/posts/" + d['Name'].replaceAll(' ', '-');
-                row.append("td").html("<a href='" + url + "'>In Farsi</a>");
-            });
+<script>
+    var sortAscending = true;
+    var table  = d3.select('#bookTable');
+    var tbody  = table.select('tbody');
+    var columns = ["Name", "Author", "Genre", "Pages", "Language", "Date(started)", "Date(finished)", "Rating(1-10)"];
 
-            var rows = tbody.selectAll("tr");
-            table.selectAll('th')
-                .on('click', function (d, i) {
-                    if (i >= columns.length) { return; }
-                    if (sortAscending) {
-                        rows.sort(function(a, b) { return d3.ascending(a[columns[i]], b[columns[i]]); });
-                        sortAscending = false;
-                    } else {
-                        rows.sort(function(a, b) { return d3.descending(a[columns[i]], b[columns[i]]); });
-                        sortAscending = true;
-                    }
-                });
-        });
+    var genreClass = {
+        "Novel":         "g-novel",
+        "Novella":       "g-novella",
+        "Short Stories": "g-short-stories",
+        "Non-fiction":   "g-non-fiction",
+        "Memoir":        "g-memoir",
+        "Philosophy":    "g-philosophy",
+        "Poetry":        "g-poetry",
+        "Play":          "g-play",
+        "Essays":        "g-essays",
+        "Manga":         "g-manga",
+        "Thriller":      "g-thriller",
+    };
 
-        function searchFunction() {
-            var input, filter, tr, td, i, txtValue;
-            input = document.getElementById("searchInput");
-            filter = input.value.toUpperCase();
-            tr = tbody.selectAll("tr");
-            tr.each(function() {
-                var row = d3.select(this);
-                td = row.selectAll("td").nodes();
-                var found = false;
-                td.forEach(function(cell) {
-                    txtValue = cell.textContent || cell.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        found = true;
-                    }
-                });
-                if (found) {
-                    row.style("display", "");
+    function ratingClass(v) {
+        var n = parseFloat(v);
+        if (isNaN(n)) return null;
+        if (n >= 8)   return "r-high";
+        if (n >= 5)   return "r-mid";
+        return "r-low";
+    }
+
+    function blank(v) { return !v || v === "?"; }
+    function dash()   { return "<span class='muted'>—</span>"; }
+
+    d3.csv("data.csv").then(function(data) {
+        document.getElementById("bookCount").textContent = data.length;
+
+        data.forEach(function(d) {
+            var row = tbody.append("tr");
+
+            columns.forEach(function(col) {
+                var val = d[col] || "?";
+
+                if (col === "Name") {
+                    var fname = val.replace(/ /g, '').replace(/'/g, '').toLowerCase() + ".txt";
+                    row.append("td")
+                       .append("a")
+                       .attr("class", "book-link")
+                       .attr("href", "summary.html?filename=" + fname)
+                       .text(val);
+
+                } else if (col === "Genre") {
+                    if (blank(val)) { row.append("td").html(dash()); return; }
+                    var cls = genreClass[val] || "g-default";
+                    row.append("td").html("<span class='genre " + cls + "'>" + val + "</span>");
+
+                } else if (col === "Rating(1-10)") {
+                    if (blank(val)) { row.append("td").html(dash()); return; }
+                    var rc = ratingClass(val);
+                    row.append("td").html(rc
+                        ? "<span class='badge " + rc + "'>" + val + "</span>"
+                        : dash());
+
+                } else if (col === "Pages") {
+                    if (blank(val)) { row.append("td").html(dash()); return; }
+                    row.append("td").html("<span class='pages-text'>" + val + "</span>");
+
                 } else {
-                    row.style("display", "none");
+                    row.append("td").html(blank(val) ? dash() : val);
                 }
             });
-        }
-    </script>
+
+            var url = "https://travel-in-books.github.io/posts/" + d['Name'].replaceAll(' ', '-');
+            row.append("td").html("<a class='review-link' href='" + url + "' title='Read review'><i class='fas fa-external-link-alt'></i></a>");
+        });
+
+        var rows = tbody.selectAll("tr");
+        table.selectAll("th").on("click", function(d, i) {
+            if (i >= columns.length) return;
+            if (sortAscending) {
+                rows.sort(function(a, b) { return d3.ascending(a[columns[i]], b[columns[i]]); });
+                sortAscending = false;
+            } else {
+                rows.sort(function(a, b) { return d3.descending(a[columns[i]], b[columns[i]]); });
+                sortAscending = true;
+            }
+        });
+    });
+
+    function searchFunction() {
+        var filter = document.getElementById("searchInput").value.toUpperCase();
+        tbody.selectAll("tr").each(function() {
+            var row = d3.select(this);
+            var found = row.selectAll("td").nodes().some(function(cell) {
+                return (cell.textContent || cell.innerText).toUpperCase().indexOf(filter) > -1;
+            });
+            row.style("display", found ? "" : "none");
+        });
+    }
+</script>
 </body>
 </html>

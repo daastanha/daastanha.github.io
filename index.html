@@ -180,6 +180,9 @@
         .g-manga         { background: #f1f5f9; color: #334155; }
         .g-thriller      { background: #fef2f2; color: #991b1b; }
         .g-default       { background: #f1f5f9; color: #475569; }
+
+        /* ── Sub-genre ── */
+        .subgenre { font-size: 11px; color: #888; font-style: italic; font-family: sans-serif; }
     </style>
 </head>
 <body>
@@ -206,9 +209,10 @@
                 <tr>
                     <th>Name <i class="fas fa-sort sort-icon"></i></th>
                     <th>Author <i class="fas fa-sort sort-icon"></i></th>
-                    <th>Genre <i class="fas fa-sort sort-icon"></i></th>
-                    <th>Pages <i class="fas fa-sort sort-icon"></i></th>
                     <th>Language <i class="fas fa-sort sort-icon"></i></th>
+                    <th>Genre <i class="fas fa-sort sort-icon"></i></th>
+                    <th>Sub-genre <i class="fas fa-sort sort-icon"></i></th>
+                    <th>Pages <i class="fas fa-sort sort-icon"></i></th>
                     <th>Started <i class="fas fa-sort sort-icon"></i></th>
                     <th>Finished <i class="fas fa-sort sort-icon"></i></th>
                     <th>Rating <i class="fas fa-sort sort-icon"></i></th>
@@ -224,7 +228,7 @@
     var sortAscending = true;
     var table  = d3.select('#bookTable');
     var tbody  = table.select('tbody');
-    var columns = ["Name", "Author", "Genre", "Pages", "Language", "Date(started)", "Date(finished)", "Rating(1-10)"];
+    var columns = ["Name", "Author", "Language", "Genre", "Sub-genre", "Pages", "Date(started)", "Date(finished)", "Rating(1-10)"];
 
     var genreClass = {
         "Novel":         "g-novel",
@@ -272,6 +276,10 @@
                     if (blank(val)) { row.append("td").html(dash()); return; }
                     var cls = genreClass[val] || "g-default";
                     row.append("td").html("<span class='genre " + cls + "'>" + val + "</span>");
+
+                } else if (col === "Sub-genre") {
+                    if (blank(val)) { row.append("td").html(dash()); return; }
+                    row.append("td").html("<span class='subgenre'>" + val + "</span>");
 
                 } else if (col === "Rating(1-10)") {
                     if (blank(val)) { row.append("td").html(dash()); return; }
